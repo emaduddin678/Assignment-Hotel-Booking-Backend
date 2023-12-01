@@ -7,7 +7,7 @@ import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import connect from "./connectionDb.js"
+import { connect } from "./connectionDb.js";
 
 const app = express();
 
@@ -17,13 +17,13 @@ app.use(
       "http://localhost:5173",
       "http://localhost:5174",
       "http://localhost:5175",
+      "https://thriving-pothos-1a3c36.netlify.app",
     ],
     credentials: true,
   })
 );
 dotenv.config();
 connect();
-
 
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected!");
@@ -57,5 +57,4 @@ app.use((err, req, res, next) => {
 
 app.listen(8800, () => {
   console.log("Server is running at http://localhost:8800");
-  
 });
