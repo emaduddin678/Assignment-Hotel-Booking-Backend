@@ -21,6 +21,7 @@ app.use(
   })
 );
 dotenv.config();
+connect();
 
 
 mongoose.connection.on("disconnected", () => {
@@ -52,5 +53,5 @@ app.use((err, req, res, next) => {
 
 app.listen(8800, () => {
   console.log("Server is running at http://localhost:8800");
-  connect();
+  
 });
