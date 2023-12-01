@@ -16,30 +16,22 @@ app.use(
       "http://localhost:5173",
       "http://localhost:5174",
       "http://localhost:5175",
-      ],
-    credentials: true, 
+    ],
+    credentials: true,
   })
 );
 dotenv.config();
- 
-const connect = async () => { 
-  try {
-    await mongoose.connect(process.env.MONGO);
-    console.log("MongoDB connected!");
-  } catch (error) {
-    throw error;
-  }
-};
+
 
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected!");
 });
 
-app.use(cookieParser()); 
-app.use(express.json()); 
-app.post("/emad", (req,res)=>{
-  res.send(req.body.name)
-})
+app.use(cookieParser());
+app.use(express.json());
+app.post("/emad", (req, res) => {
+  res.send(req.body.name);
+});
 
 app.use("/api/auth", authRoute);
 app.use("/api/hotels", hotelsRoute);

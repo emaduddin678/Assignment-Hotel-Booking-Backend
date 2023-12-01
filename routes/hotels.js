@@ -23,6 +23,7 @@ router.get("/countByType", countByType);
 router.get("/", getAllHotel);
 router.get("/room/:id", getHotelRooms);
 
+
 // GET Single
 router.get("/find/:id", getSingleHotel);
 
