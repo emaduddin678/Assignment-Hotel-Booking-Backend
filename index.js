@@ -7,6 +7,7 @@ import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import connect from "./connectionDb.js"
 
 const app = express();
 
@@ -30,6 +31,9 @@ mongoose.connection.on("disconnected", () => {
 
 app.use(cookieParser());
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Server is working.");
+});
 app.post("/emad", (req, res) => {
   res.send(req.body.name);
 });
