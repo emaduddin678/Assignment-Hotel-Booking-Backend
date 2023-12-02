@@ -36,7 +36,11 @@ export const register = async (req, res, next) => {
         contentType: req.file.mimetype,
       },
     });
-
+    // const img = {
+    //   data: req.file.buffer.toString("base64"),
+    //   contentType: req.file.mimetype,
+    // };
+    // res.send(img);
     await newUser.save();
     res.status(200).send("User has been created.");
   } catch (error) {

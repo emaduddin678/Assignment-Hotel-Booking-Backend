@@ -8,8 +8,10 @@ export const createHotel = async (req, res, next) => {
       data: file.buffer.toString("base64"),
       contentType: file.mimetype,
     }));
+    
+    res.send(images)
 
-    const newHotel = new Hotel({ ...req.body, photos: images });
+    const newHotel = new Hotel({ ...req.body, city: req.body.city.toLowerCase(), photos: images });
     // res.send(newHotel)
     const savedHotel = await newHotel.save();
     res.status(200).json(savedHotel);

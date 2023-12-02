@@ -22,14 +22,13 @@ const hotelSchema = new Schema({
     type: String,
     required: true,
   },
-  photos: {
-    type: [
-      {
-        data: Buffer,
-        contentType: String,
-      },
-    ],
-  },
+  photos: [
+    {
+      data: String,
+      contentType: String,
+    },
+  ],
+
   title: {
     type: String,
     required: true,
@@ -56,5 +55,4 @@ const hotelSchema = new Schema({
   },
 });
 
-
-export default model("Hotel", hotelSchema)
+export default model("Hotel", hotelSchema);
