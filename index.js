@@ -14,7 +14,7 @@ dotenv.config();
 
 connect();
 ifDisconnect();
-
+ 
 app.use(
   cors({
     origin: [
@@ -23,7 +23,7 @@ app.use(
       "http://localhost:5175",
       "https://thriving-pothos-1a3c36.netlify.app",
     ],
-    credentials: true,
+    credentials: true, 
   })
 );
 
@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 app.get("/", (req, res) => {
   // console.log(connect())
-  res.send("Server is working.");
+  res.send(process.env.MONGO);
 });
 app.post("/emad", (req, res) => {
   res.send(req.body.name);
