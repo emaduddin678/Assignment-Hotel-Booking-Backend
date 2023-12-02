@@ -7,13 +7,22 @@ import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { connect, ifDisconnect } from "./connectionDb.js";
+// import { connect, ifDisconnect } from "./connectionDb.js";
 
 const app = express();
 dotenv.config();
 
+const connect = async () => {
+  try {
+    await mongoose.connect(process.env.MONGO);
+    console.log("MongoDB connected!");
+  } catch (error) {
+    throw error;
+  }
+};
+
 connect();
-ifDisconnect();
+// ifDisconnect();
  
 app.use(
   cors({
