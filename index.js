@@ -1,17 +1,20 @@
 import express from "express";
 import dotenv from "dotenv";
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
 import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { connect } from "./connectionDb.js";
+import { connect, ifDisconnect } from "./connectionDb.js";
 
 const app = express();
 dotenv.config();
+
+
 connect();
+ifDisconnect
 
 app.use(
   cors({
@@ -26,12 +29,12 @@ app.use(
 );
 
 
-mongoose.connection.on("disconnected", () => {
-  console.log("mongoDB disconnected!");
-});
 
-app.use(cookieParser());
+
 app.use(express.json());
+app.use(cookieParser());
+
+
 app.get("/", (req, res) => {
   // console.log(connect())
   res.send("Server is working.");
