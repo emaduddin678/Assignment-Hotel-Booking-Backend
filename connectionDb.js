@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const connect = async () => {
+const connect = async () => {
   try {
     await mongoose.connect(process.env.MONGO);
     console.log("MongoDB connected!");
@@ -9,7 +9,7 @@ export const connect = async () => {
   }
 };
 
-export const ifDisconnect = async () => {
+const ifDisconnect = async () => {
   try {
     mongoose.connection.on("disconnected", () => {
       console.log("mongoDB disconnected!");
@@ -18,3 +18,5 @@ export const ifDisconnect = async () => {
     throw error;
   }
 };
+
+export { connect, ifDisconnect };

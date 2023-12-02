@@ -28,7 +28,7 @@ app.use(
 );
 
 app.use(express.json());
-app.use(cookieParser());
+app.use(cookieParser()); 
 
 app.get("/", (req, res) => {
   // console.log(connect())
