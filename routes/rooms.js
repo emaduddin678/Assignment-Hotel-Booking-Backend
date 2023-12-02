@@ -25,7 +25,7 @@ router.delete("/:id/:hotelid", verifyAdmin, deleteRoom);
 router.get("/:id", getSingleRoom);
 
 // // GET ALL
-// router.get("/", getAllRooms);
+router.get("/", getAllRooms);
 
 router.get("/", (req, res) => {
   res.send("Hello, this is rooms endpoint!");

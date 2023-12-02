@@ -10,6 +10,8 @@ import cors from "cors";
 import { connect } from "./connectionDb.js";
 
 const app = express();
+dotenv.config();
+connect();
 
 app.use(
   cors({
@@ -22,8 +24,7 @@ app.use(
     credentials: true,
   })
 );
-dotenv.config();
-connect();
+
 
 mongoose.connection.on("disconnected", () => {
   console.log("mongoDB disconnected!");
@@ -32,6 +33,7 @@ mongoose.connection.on("disconnected", () => {
 app.use(cookieParser());
 app.use(express.json());
 app.get("/", (req, res) => {
+  // console.log(connect())
   res.send("Server is working.");
 });
 app.post("/emad", (req, res) => {
