@@ -12,9 +12,8 @@ import { connect, ifDisconnect } from "./connectionDb.js";
 const app = express();
 dotenv.config();
 
-
 connect();
-ifDisconnect
+ifDisconnect();
 
 app.use(
   cors({
@@ -28,12 +27,8 @@ app.use(
   })
 );
 
-
-
-
 app.use(express.json());
 app.use(cookieParser());
-
 
 app.get("/", (req, res) => {
   // console.log(connect())
