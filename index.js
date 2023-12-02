@@ -32,7 +32,7 @@ app.use(cookieParser());
 
 app.get("/", (req, res) => {
   // console.log(connect())
-  res.send(process.env.MONGO);
+  res.send("Server is working!!");
 });
 app.post("/emad", (req, res) => {
   res.send(req.body.name);
